@@ -13,7 +13,7 @@ double Op::evaluate() { return this->value; };
 Iterator* Op::create_iterator() { return new NullIterator(this); }
 
 void Op::accept(Visitor* v) {
-
+    v->opNode(this);
 }
 
 //--------------------------------------------------------------------------
@@ -26,10 +26,6 @@ Base* Operator::get_left() { return left; };
 Base* Operator::get_right() { return right; };
 Iterator* Operator::create_iterator() { return new OperatorIterator(this); }
 
-void Operator::accept(Visitor* v) {
-
-}
-
 //--------------------------------------------------------------------------
 // Unary Base Class
 //--------------------------------------------------------------------------
@@ -39,10 +35,6 @@ UnaryOperator::UnaryOperator(Base* c) : child(c) { };
 Base* UnaryOperator::get_left() { return child; }
 Base* UnaryOperator::get_right() { return NULL; }
 Iterator* UnaryOperator::create_iterator() { return new UnaryIterator(this); }
-
-void UnaryOperator::accept(Visitor* v) {
-
-}
 
 //--------------------------------------------------------------------------
 // Add Class
@@ -54,7 +46,7 @@ void Add::print() { cout << "+"; }
 double Add::evaluate() { return this->left->evaluate() + this->right->evaluate(); };
 
 void Add::accept(Visitor* v) {
-
+    v->addNode();
 }
 
 //--------------------------------------------------------------------------
@@ -67,7 +59,7 @@ void Sub::print() { cout << "-"; }
 double Sub::evaluate() { return this->left->evaluate() - this->right->evaluate(); };
 
 void Sub::accept(Visitor* v) {
-
+    v->subNode();
 }
 
 //--------------------------------------------------------------------------
@@ -80,7 +72,7 @@ void Mult::print() { cout << "*"; }
 double Mult::evaluate() { return this->left->evaluate() * this->right->evaluate(); };
 
 void Mult::accept(Visitor* v) {
-
+    v->multNode();
 }
 
 //--------------------------------------------------------------------------
@@ -93,7 +85,7 @@ void Sqr::print() { cout << "^2"; }
 double Sqr::evaluate() { return pow(this->child->evaluate(),2); };
 
 void Sqr::accept(Visitor* v) {
-
+    v->sqrNode();
 }
 
 //--------------------------------------------------------------------------
@@ -106,5 +98,5 @@ void Root::print() { cout << "ROOT"; }
 double Root::evaluate() { return this->child->evaluate(); };
 
 void Root::accept(Visitor* v) {
-
+    v->rootNode();
 }
