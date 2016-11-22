@@ -5,8 +5,10 @@
 #include "visitor.h"
 #include <string>
 
+using namespace std;
+
 PrintVisitor::PrintVisitor() {
-    
+
 }
 
 void PrintVisitor::rootNode() {
