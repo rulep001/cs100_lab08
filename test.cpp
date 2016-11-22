@@ -13,6 +13,7 @@ int main() {
 	Sqr* sqr = new Sqr(op2);
 	Sub* sub = new Sub(add, sqr);
 	Root* root = new Root(sub);
+	Visitor* visitor = new PrintVisitor();
 
 	cout << "--- PreOrder Iteration ---" << endl;
 	PreOrderIterator* pre_itr = new PreOrderIterator(root);
@@ -20,4 +21,6 @@ int main() {
 		pre_itr->current()->print();
 		cout << endl;
 	}
+
+	visitor->execute();
 };
