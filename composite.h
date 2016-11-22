@@ -6,12 +6,12 @@
 #include <math.h>
 #include <string>
 #include "iterator.h"
+#include "visitor.h"
 
 using namespace std;
 
 class Iterator;
-class NullIterator;
-class UnaryIterator;
+class Visitor;
 
 //Abstract Base Class
 class Base {

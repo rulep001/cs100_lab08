@@ -1,6 +1,3 @@
-#ifndef __VISITOR_H__
-#define __VISITOR_H__
-
 #include "composite.h"
 #include "visitor.h"
 #include <string>
@@ -8,42 +5,42 @@
 
 using namespace std;
 
-PrintVisitor::PrintVisitor() 
+PrintVisitor::PrintVisitor()
 {}
 
-void PrintVisitor::rootNode() 
+void PrintVisitor::rootNode()
 {
 	return;
 }
 
-void PrintVisitor::sqrNode() 
+void PrintVisitor::sqrNode()
 {
 	output += "^2\n";
 }
 
-void PrintVisitor::multNode() 
+void PrintVisitor::multNode()
 {
 	output += "*\n";
 }
 
-void PrintVisitor::subNode() 
+void PrintVisitor::subNode()
 {
 	output += "-\n";
 }
 
-void PrintVisitor::addNode() 
+void PrintVisitor::addNode()
 {
 	output += "+\n";
 }
 
-void PrintVisitor::opNode(Op* op) 
+void PrintVisitor::opNode(Op* op)
 {
 	ostringstream ss;
 	ss << op->evaluate();
-	output += ss.str() + '\n'
+	output += ss.str() + '\n';
 }
 
-void PrintVisitor::execute() 
+void PrintVisitor::execute()
 {
 
 }
