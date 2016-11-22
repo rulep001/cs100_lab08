@@ -5,9 +5,11 @@
 #include "visitor.h"
 #include <string>
 
-PrintVisitor::PrintVisitor();
+PrintVisitor::PrintVisitor() {
+    
+}
 
-void PrintVisitor::ootNode() {
+void PrintVisitor::rootNode() {
 
 }
 
@@ -32,5 +34,5 @@ void PrintVisitor::opNode(Op* op) {
 }
 
 void PrintVisitor::execute() {
-    
+
 }
