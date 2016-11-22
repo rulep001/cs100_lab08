@@ -4,37 +4,46 @@
 #include "composite.h"
 #include "visitor.h"
 #include <string>
+#include <sstream>
 
 using namespace std;
 
-PrintVisitor::PrintVisitor() {
+PrintVisitor::PrintVisitor() 
+{}
 
+void PrintVisitor::rootNode() 
+{
+	return;
 }
 
-void PrintVisitor::rootNode() {
-
+void PrintVisitor::sqrNode() 
+{
+	output += "^2\n";
 }
 
-void PrintVisitor::sqrNode() {
-
+void PrintVisitor::multNode() 
+{
+	output += "*\n";
 }
 
-void PrintVisitor::multNode() {
-
+void PrintVisitor::subNode() 
+{
+	output += "-\n";
 }
 
-void PrintVisitor::subNode() {
-
+void PrintVisitor::addNode() 
+{
+	output += "+\n";
 }
 
-void PrintVisitor::addNode() {
-
+void PrintVisitor::opNode(Op* op) 
+{
+	ostringstream ss;
+	ss << op->evaluate();
+	output += ss.str() + '\n'
 }
 
-void PrintVisitor::opNode(Op* op) {
-
-}
-
-void PrintVisitor::execute() {
+void PrintVisitor::execute() 
+{
 
 }
