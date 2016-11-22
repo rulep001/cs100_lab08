@@ -24,6 +24,8 @@ class Base {
         virtual Iterator* create_iterator() = 0;
         virtual Base* get_left() = 0;
         virtual Base* get_right() = 0;
+
+        void accept(Visitor* v);
 };
 
 //Leaf Class
@@ -37,9 +39,11 @@ class Op: public Base {
 
         Base* get_left();
         Base* get_right();
-        double evaluate(); 
+        double evaluate();
         void print();
         Iterator* create_iterator();
+
+        void accept(Visitor* v);
 };
 
 //Composite Base Classes
@@ -54,6 +58,8 @@ class Operator: public Base {
         Base* get_right();
         virtual double evaluate() = 0;	//Note: this is implicit in the inheritance, but can also be made explicit
         Iterator* create_iterator();
+
+        void accept(Visitor* v);
 };
 
 class UnaryOperator: public Base {
@@ -67,6 +73,8 @@ class UnaryOperator: public Base {
         Base* get_right();
         virtual double evaluate() = 0;	//Note: this is implicit in the inheritance, but can also be made explicit
         Iterator* create_iterator();
+
+        void accept(Visitor* v);
 };
 
 //Composite Classes
@@ -77,6 +85,8 @@ class Add: public Operator {
 
         void print();
         double evaluate();
+
+        void accept(Visitor* v);
 };
 
 class Sub: public Operator {
@@ -86,6 +96,8 @@ class Sub: public Operator {
 
         void print();
         double evaluate();
+
+        void accept(Visitor* v);
 };
 
 class Mult: public Operator {
@@ -95,6 +107,8 @@ class Mult: public Operator {
 
         void print();
         double evaluate();
+
+        void accept(Visitor* v);
 };
 
 class Sqr: public UnaryOperator {
@@ -104,6 +118,8 @@ class Sqr: public UnaryOperator {
 
         void print();
         double evaluate();
+
+        void accept(Visitor* v);
 };
 
 class Root: public UnaryOperator {
@@ -113,6 +129,8 @@ class Root: public UnaryOperator {
 
         void print();
         double evaluate();
+
+        void accept(Visitor* v);
 };
 
 #endif //__COMPOSITE_CLASS__
